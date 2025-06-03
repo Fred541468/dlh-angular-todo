@@ -10,6 +10,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: docker pull
-      run: 
+      run: | 
         docker pull fred541468/todolist
+    - name : ls
+      run: |
+         ls
   
