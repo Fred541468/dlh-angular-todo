@@ -9,10 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: docker pull
-      run: | 
-        docker pull fred541468/todolist
-    - name : ls
+    - name: docker login
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: |
-         ls
-  
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - name: Docker logout
+      run: |
+        docker logout
